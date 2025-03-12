@@ -6,34 +6,73 @@
 
 int my_strcmp(const char *s1, const char *s2)
 {
-	/**
-	 * TODO: implement function
-	 */
-	(void) s1;
-	(void) s2;
+	int x=0;
+	if(strlen(s1)<strlen(s2)) {
+		for(int i=0;i<strlen(s1);i++) {
+		if(s1[i]<s2[i]) {
+			x=-1;
+			break;
+		}
+		else if(s1[i]>s2[i]) {
+			x=1;
+			break;
+		}
+		if(x==0) x=-1;
+		}
+	}
 
-	return 0x420;
+	else if(strlen(s1)>strlen(s2)) {
+		for(int i=0;i<strlen(s2);i++) {
+			if(s1[i]<s2[i]) {
+				x=-1;
+				break;
+			}
+			else if(s1[i]>s2[i]) {
+				x=1;
+				break;
+			}
+			if(x==0) x=1;
+		}
+	}
+
+	else {
+		for(int i=0;i<strlen(s2);i++) {
+			if(s1[i]<s2[i]) {
+				x=-1;
+				break;
+			}
+			else if(s1[i]>s2[i]) {
+				x=1;
+				break;
+			}
+		}
+	}
+	return x;
 }
+
 
 void *my_memcpy(void *dest, const void *src, size_t n)
 {
-	/**
-	 * TODO: implement function
-	 */
-	(void) dest;
-	(void) src;
-	(void) n;
+	unsigned char * d = (unsigned char *) dest;
+	const unsigned char * s = (const unsigned char *) src;
+	
+	s = s+n;
+	d = d+n;
 
+	while(n--) {
+		*(--d) = *(--s);
+	}
 	return dest;
 }
 
 char *my_strcpy(char *dest, const char *src)
 {
-	/**
-	 * TODO: implement function
-	 */
-	(void) dest;
-	(void) src;
-
+	int i=0;
+	while(*(src+i)!=0) {
+		*(dest+i) = *(src+i);
+		i++;
+	}
+	
+	*(dest+i) = '\0';
 	return dest;
 }
